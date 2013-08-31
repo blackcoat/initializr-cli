@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# Create static sites with Initializr
+# https://github.com/verekia/initializr
+
+initializr () {
+  if [[ $# > 0 ]]; then
+    mkdir -p "$1"
+    tar -zxf <(curl http://www.initializr.com/builder) -C "$1"
+    rsync -a "$1/initializr/" "$1"
+    rm -Rf "$1/initializr"
+    echo
+    echo "Created initializr site in '$1'"
+    cd "$1"
+  else
+    display_usage
+    exit 1
+  fi
+}
+
+display_usage () {
+  cat <<UsageMessage
+  usage: $(basename $0) <site-name>
+
+  Create a new static site with Initializr
+  https://github.com/verekia/initializr
+UsageMessage
+}
+
+initializr $@
