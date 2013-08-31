@@ -6,6 +6,7 @@
 initializr () {
   if [[ $# > 0 ]]; then
     create_project "$1"
+    remove_the_initializr_folder "$1"
     echo
     echo "Created initializr site in '$1'"
     cd "$1"
@@ -18,6 +19,9 @@ initializr () {
 create_project () {
   mkdir -p "$1"
   tar -zxf <(curl http://www.initializr.com/builder) -C "$1"
+}
+
+remove_the_initializr_folder () {
   rsync -a "$1/initializr/" "$1"
   rm -Rf "$1/initializr"
 }
