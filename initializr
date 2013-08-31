@@ -9,7 +9,6 @@ initializr () {
     remove_the_initializr_folder "$1"
     echo
     echo "Created initializr site in '$1'"
-    cd "$1"
   else
     display_usage
     exit 1
