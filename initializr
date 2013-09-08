@@ -3,6 +3,8 @@
 # Create static sites with Initializr
 # https://github.com/verekia/initializr
 
+set -e
+
 initializr () {
   process_options $@
 
