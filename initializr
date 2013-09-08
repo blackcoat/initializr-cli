@@ -7,7 +7,7 @@ initializr () {
   process_options $@
 
   if [[ $# > 0 ]]; then
-    create_project "$1"
+    create_project
     remove_the_initializr_folder "$1"
     echo
     echo "Created initializr site in '$1'"
@@ -31,16 +31,18 @@ process_options () {
         ;;
     esac
   done
+  project_folder="$BASH_ARGV"
 }
 
 create_project () {
-  mkdir -p "$1"
-  tar -zxf <(curl http://www.initializr.com/builder) -C "$1"
+  echo "Creating initializr site in '$project_folder'"
+  mkdir -p $project_folder
+  tar -zxf <(curl http://www.initializr.com/builder) -C $project_folder
 }
 
 remove_the_initializr_folder () {
-  rsync -a "$1/initializr/" "$1"
-  rm -Rf "$1/initializr"
+  rsync -a "$project_folder/initializr/" $project_folder
+  rm -Rf "$project_folder/initializr"
 }
 
 display_usage () {
