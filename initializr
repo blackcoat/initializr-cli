@@ -4,6 +4,20 @@
 # https://github.com/verekia/initializr
 
 initializr () {
+  while getopts ":h" opt; do
+    case $opt in
+      h)
+        display_usage
+        exit 0
+        ;;
+      \?)
+        echo "Invalid option: -$OPTARG" >&2
+        display_usage
+        exit 1
+        ;;
+    esac
+  done
+
   if [[ $# > 0 ]]; then
     create_project "$1"
     remove_the_initializr_folder "$1"
