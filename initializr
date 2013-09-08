@@ -4,7 +4,7 @@
 # https://github.com/verekia/initializr
 
 initializr () {
-  process_arguments $@
+  process_options $@
 
   if [[ $# > 0 ]]; then
     create_project "$1"
@@ -17,7 +17,7 @@ initializr () {
   fi
 }
 
-process_arguments () {
+process_options () {
   while getopts ":h" opt; do
     case $opt in
       h)
