@@ -4,6 +4,20 @@
 # https://github.com/verekia/initializr
 
 initializr () {
+  process_arguments $@
+
+  if [[ $# > 0 ]]; then
+    create_project "$1"
+    remove_the_initializr_folder "$1"
+    echo
+    echo "Created initializr site in '$1'"
+  else
+    display_usage
+    exit 1
+  fi
+}
+
+process_arguments () {
   while getopts ":h" opt; do
     case $opt in
       h)
@@ -17,16 +31,6 @@ initializr () {
         ;;
     esac
   done
-
-  if [[ $# > 0 ]]; then
-    create_project "$1"
-    remove_the_initializr_folder "$1"
-    echo
-    echo "Created initializr site in '$1'"
-  else
-    display_usage
-    exit 1
-  fi
 }
 
 create_project () {
