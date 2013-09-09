@@ -20,8 +20,20 @@ initializr () {
 }
 
 process_options () {
-  while getopts ":h" opt; do
-    case $opt in
+  while getopts ":h-:" opt; do
+    case "$opt" in
+      -)
+        case "${OPTARG}" in
+          help)
+            display_usage
+            exit 0
+            ;;
+          *)
+            echo "Invalid option --${OPTARG}" >&2
+            display_usage
+            exit 1
+            ;;
+        esac;;
       h)
         display_usage
         exit 0
