@@ -10,7 +10,7 @@ initializr () {
 
   if [[ $# > 0 ]]; then
     create_project
-    remove_the_initializr_folder "$1"
+    remove_the_initializr_folder
     echo
     echo "Created initializr site in '$1'"
   else
