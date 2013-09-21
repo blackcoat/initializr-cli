@@ -50,7 +50,7 @@ process_options () {
 }
 
 builder_url () {
-  query_string=$(printf "&%s" "${modules[@]}")
+  local query_string=$(printf "&%s" "${modules[@]}")
   query_string=${query_string:1}
   echo "http://www.initializr.com/builder?${query_string}"
 }
