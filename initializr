@@ -6,6 +6,7 @@
 set -e
 
 initializr () {
+  modules=(jquerymin modernizr)
   process_options $@
 
   if [[ $# > 0 ]]; then
@@ -48,10 +49,16 @@ process_options () {
   project_folder="$BASH_ARGV"
 }
 
+builder_url () {
+  query_string=$(printf "&%s" "${modules[@]}")
+  query_string=${query_string:1}
+  echo "http://www.initializr.com/builder?${query_string}"
+}
+
 create_project () {
   echo "Creating initializr site in '$project_folder'"
   mkdir -p $project_folder
-  tar -zxf <(curl http://www.initializr.com/builder) -C $project_folder
+  tar -zxf <(curl $(builder_url)) -C $project_folder
 }
 
 remove_the_initializr_folder () {
