@@ -6,15 +6,7 @@
 set -e
 
 initializr () {
-  modules=(
-    jquerymin
-    modernizr
-    h5bp-iecond
-    h5bp-chromeframe
-    h5bp-analytics
-    h5bp-favicon
-    h5bp-appletouchicons
-  )
+  set_default_modules
   process_options $@
 
   if [[ $# > 0 ]]; then
@@ -70,6 +62,18 @@ add_module () {
 
 remove_module () {
   modules=(${modules[@]//$1/})
+}
+
+set_default_modules () {
+  modules=(
+    jquerymin
+    modernizr
+    h5bp-iecond
+    h5bp-chromeframe
+    h5bp-analytics
+    h5bp-favicon
+    h5bp-appletouchicons
+  )
 }
 
 builder_url () {
