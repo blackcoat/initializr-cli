@@ -13,7 +13,7 @@ initializr () {
     create_project
     remove_the_initializr_folder
     echo
-    echo "Created initializr site in '$1'"
+    echo "Created initializr site in '${project_folder}'"
   else
     display_usage
     exit 1
@@ -28,6 +28,18 @@ process_options () {
           help)
             display_usage
             exit 0
+            ;;
+          bootstrap)
+            remove_module modernizr
+            add_module boot-css
+            add_module boot-hero
+            add_module boot-scripts
+            add_module modernizrrespond
+            add_module h5bp-iecond
+            add_module h5bp-chromeframe
+            add_module h5bp-analytics
+            add_module h5bp-favicon
+            add_module h5bp-appletouchicons
             ;;
           *)
             echo "Invalid option --${OPTARG}" >&2
