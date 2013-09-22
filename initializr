@@ -6,7 +6,15 @@
 set -e
 
 initializr () {
-  modules=(jquerymin modernizr)
+  modules=(
+    jquerymin
+    modernizr
+    h5bp-iecond
+    h5bp-chromeframe
+    h5bp-analytics
+    h5bp-favicon
+    h5bp-appletouchicons
+  )
   process_options $@
 
   if [[ $# > 0 ]]; then
@@ -35,11 +43,6 @@ process_options () {
             add_module boot-hero
             add_module boot-scripts
             add_module modernizrrespond
-            add_module h5bp-iecond
-            add_module h5bp-chromeframe
-            add_module h5bp-analytics
-            add_module h5bp-favicon
-            add_module h5bp-appletouchicons
             ;;
           *)
             echo "Invalid option --${OPTARG}" >&2
