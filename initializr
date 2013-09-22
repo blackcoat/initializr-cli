@@ -36,6 +36,11 @@ process_options () {
             add_module boot-scripts
             add_module modernizrrespond
             ;;
+          responsive)
+            remove_module modernizr
+            add_module izr-responsive
+            add_module modernizrrespond
+            ;;
           *)
             echo "Invalid option --${OPTARG}" >&2
             display_usage
