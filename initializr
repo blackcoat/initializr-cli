@@ -36,6 +36,16 @@ process_options () {
             add_module boot-scripts
             add_module modernizrrespond
             ;;
+          h5bp)
+            add_module h5bp-content
+            add_module h5bp-404
+            add_module h5bp-adobecrossdomain
+            add_module h5bp-css
+            add_module h5bp-htaccess
+            add_module h5bp-humans
+            add_module h5bp-robots
+            add_module h5bp-scripts
+            ;;
           responsive)
             remove_module modernizr
             add_module izr-responsive
