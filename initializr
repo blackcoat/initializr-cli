@@ -116,10 +116,18 @@ ResultMessage
 
 display_usage () {
   cat <<UsageMessage
-  usage: $(basename $0) <site-name>
-
   Create a new static site with Initializr
   https://github.com/verekia/initializr
+
+  Usage: $(basename $0) [options] <site-name>
+
+  Options:
+    --bootstrap   Bootstrap template
+    --h5bp        HTML5 Boilerplate template
+    --responsive  Responsive template
+
+    -h, --help    Display this message
+
 UsageMessage
 }
 
