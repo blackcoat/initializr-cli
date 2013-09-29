@@ -49,6 +49,10 @@ process_options () {
             remove_module modernizr
             add_module izr-responsive
             add_module modernizrrespond
+            add_module h5bp-css
+            add_module h5bp-csshelpers
+            add_module h5bp-mediaqueryprint
+            add_module izr-emptyscript
             ;;
           *)
             echo "Invalid option --${OPTARG}" >&2
