@@ -12,8 +12,7 @@ initializr () {
   if [[ $# > 0 ]]; then
     create_project
     remove_the_initializr_folder
-    echo
-    echo "Created initializr site in '${project_folder}'"
+    display_result
   else
     display_usage
     exit 1
@@ -106,6 +105,13 @@ create_project () {
 remove_the_initializr_folder () {
   rsync -a "$project_folder/initializr/" $project_folder
   rm -Rf "$project_folder/initializr"
+}
+
+display_result () {
+  cat <<ResultMessage
+
+  Created initializr site in '$project_folder'
+ResultMessage
 }
 
 display_usage () {
