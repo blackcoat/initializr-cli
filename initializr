@@ -34,6 +34,7 @@ process_options () {
             add_module boot-hero
             add_module boot-scripts
             add_module modernizrrespond
+            add_module izr-emptyscript
             ;;
           h5bp)
             add_module h5bp-content
