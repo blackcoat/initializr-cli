@@ -2,7 +2,14 @@
 
 set -e
 
-INITIALIZR_CLI=/usr/local/bin/initializr
+if [[ -z "$INSTALL_PATH" ]]; then
+  INSTALL_PATH=/usr/local/bin
+fi
+
+INITIALIZR_CLI="$INSTALL_PATH/initializr"
+
+echo "Installing initializr-cli in \"$INSTALL_PATH\""
+echo
 
 curl -o $INITIALIZR_CLI https://raw.github.com/blackcoat/initializr-cli/master/initializr
 chmod a+x $INITIALIZR_CLI
