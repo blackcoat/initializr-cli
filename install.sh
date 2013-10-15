@@ -8,6 +8,7 @@ fi
 
 INITIALIZR_CLI="$INSTALL_PATH/initializr"
 
+echo
 echo "Installing initializr-cli in \"$INSTALL_PATH\""
 echo
 
